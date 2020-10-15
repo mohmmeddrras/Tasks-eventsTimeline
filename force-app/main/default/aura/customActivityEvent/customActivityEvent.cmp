@@ -1,0 +1,72 @@
+<aura:component>    
+    
+    <aura:attribute name="Event" type="object" />
+    
+    <li>
+        <div class="isExpendable slds-timeline__item_expandable slds-timeline__item_event" aura:id="expId">
+            <div class="slds-media">
+                <div class="slds-media__figure">
+                    <button class="slds-button slds-button_icon"
+                            onclick="{!c.toggleAcitivity}"
+                            title="test"
+                            aria-controls="task-item-base">
+                        
+                        <lightning:icon iconName="utility:switch"
+                                        size="x-small"
+                                        class="slds-button__icon slds-timeline__details-action-icon"/>
+                    </button>
+                    
+                    <div class="slds-icon_container" title="Event">
+                        <lightning:icon iconName="standard:event" size="small"/>
+                    </div>
+                </div>
+                
+                <div class="slds-media__body">
+                    <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
+                        <div class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
+                            <h3 class="slds-truncate" title="{!v.Event.Subject}">
+                                <strong>{!v.Event.Subject}</strong>
+                            </h3>
+                        </div>
+                    </div>
+                    
+                    <p class="slds-m-horizontal_xx-small">
+                        <lightning:formattedDateTime value="{!v.Event.ActivityDateTime}"/>
+                    </p>
+                    
+                    <!-- expandable section start-->
+                    <article class="slds-box slds-timeline__item_details slds-theme_shade slds-m-top_x-small slds-m-horizontal_xx-small"
+                             id="task-item-base"
+                             aria-hidden="true">
+                        <ul class="slds-list_horizontal slds-wrap">
+                            <li class="slds-grid slds-grid_vertical slds-size_1-of-2 slds-p-bottom_small">
+                                <span class="slds-text-title slds-p-bottom_x-small">Start</span>
+                                <span class="slds-text-body_medium slds-truncate">
+                                     <p><lightning:formattedDateTime value="{!v.Event.ActivityDateTime}" year="2-digit" month="short" day="2-digit" hour="numeric"
+                                                                     weekday="long"/></p>
+                                </span>
+                            </li>
+                            
+                            <li class="slds-grid slds-grid_vertical slds-size_1-of-2 slds-p-bottom_small">
+                                <span class="slds-text-title slds-p-bottom_x-small">End</span>
+                                <span class="slds-text-body_medium slds-truncate" >
+                                <p><lightning:formattedDateTime value="{!v.Event.EndDateTime}" year="2-digit" month="short" day="2-digit" hour="numeric"
+                                 weekday="long"/></p>
+                                </span>
+                            </li>
+                            <li class="slds-grid slds-grid_vertical slds-size_1-of-2 slds-p-bottom_small">
+                                <span class="slds-text-title slds-p-bottom_x-small">Description</span>
+                                <span class="slds-text-body_medium slds-truncate" title="{!v.Event.Description}">{!v.Event.Description}</span>
+                            </li>
+                            <li class="slds-grid slds-grid_vertical slds-size_1-of-2 slds-p-bottom_small">
+                                <span class="slds-text-title slds-p-bottom_x-small">Location</span>
+                                <span class="slds-text-body_medium slds-truncate" title="{!v.Event.Location}">{!v.Event.Location}</span>
+                            </li>
+                        </ul>
+                    </article>
+                    
+                </div>
+            </div>
+        </div>
+    </li>
+</aura:component>

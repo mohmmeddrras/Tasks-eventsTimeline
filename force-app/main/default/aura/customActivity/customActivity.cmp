@@ -1,0 +1,22 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction"
+                access="global"
+                controller="customActivityCtrl">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="lstActivity" type="list" />
+    <aura:attribute name="lstEvent" type="list" />
+    <div class="slds-box slds-theme_default">
+    <ul class="slds-timeline">        
+        <!--iterate all activity records in child component-->
+        <aura:iteration items="{!v.lstActivity}" var="task">
+            <c:customActivityChild activity="{!task}"/>
+        </aura:iteration>
+        
+        <aura:iteration items="{!v.lstEvent}" var="Event">
+            <c:customActivityEvent Event="{!Event}"/>
+        </aura:iteration>
+    
+    </ul>
+        
+          
+        </div>
+</aura:component>
